@@ -18,3 +18,9 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- obtiene un feed de usuario
+
+CREATE OR REPLACE FUNCTION get_current_id() 
+RETURNS int AS $$
+    -- Devuelve el ID de la variable de sesión, o NULL si no está definida
+    SELECT current_setting('app.current_user_id', true)::int;
+$$ LANGUAGE sql STABLE;
