@@ -21,3 +21,5 @@ LEFT JOIN perfiles p ON u.id_usuario = p.id_usuario
 LEFT JOIN obra_subcategoria os ON o.id_obra = os.id_obra
 LEFT JOIN subcategorias sub ON o.id_obra = os.id_obra
 LEFT JOIN categorias cat ON sub.id_categoria = cat.id_categoria;
+
+SELECT * FROM vw_detalles_obra;
