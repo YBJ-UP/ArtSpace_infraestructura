@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: ArtSaceDB
+    container_name: ArtSpaceDB
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER_ADMIN}
