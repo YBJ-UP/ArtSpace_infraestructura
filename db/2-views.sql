@@ -5,7 +5,7 @@ SELECT
     o.descripcion,
     o.fecha_publicacion,
 
-    u.nombre AS usuario,
+    u.nombre AS autor,
     p.avatar,
 
     cat.nombre AS categoria,
