@@ -23,3 +23,18 @@ LEFT JOIN subcategorias sub ON o.id_obra = os.id_obra
 LEFT JOIN categorias cat ON sub.id_categoria = cat.id_categoria;
 
 SELECT * FROM vw_detalles_obra;
+
+CREATE OR REPLACE VIEW vw_detalles_perfil AS
+SELECT
+    u.nombre,
+    u.correo,
+    p.biografia,
+    p.avatar,
+
+    (SELECT COUNT(*) FROM obras o WHERE u.id_usuario = o.id_usuario) AS publicaciones_totales,
+    (SELECT COUNT(*) FROM seguidores s WHERE u.id_usuario = s.usuario_destino) AS seguidores_totales,
+    (SELECT COUNT(*) FROM seguidores s WHERE u.id_usuario = s.usuario_origen) AS seguidos_totales
+FROM usuarios u
+LEFT JOIN perfiles p ON u.id_usuario = p.id_usuario;
+
+SELECT * FROM vw_detalles_perfil;

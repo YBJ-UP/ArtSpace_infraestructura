@@ -46,8 +46,8 @@ CREATE TABLE perfiles (
 -- ============================================================
 CREATE TABLE seguidores (
     id_seguidor      SERIAL PRIMARY KEY,
-    usuario_origen   INT NOT NULL REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
-    usuario_destino  INT NOT NULL REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    usuario_origen   INT NOT NULL REFERENCES usuarios(id_usuario) ON DELETE CASCADE, -- el que sigue
+    usuario_destino  INT NOT NULL REFERENCES usuarios(id_usuario) ON DELETE CASCADE, -- el seguido
     fecha            TIMESTAMP NOT NULL DEFAULT NOW(),
     UNIQUE (usuario_origen, usuario_destino),
     CHECK (usuario_origen <> usuario_destino)
@@ -103,7 +103,7 @@ CREATE TABLE media (
 -- ============================================================
 CREATE TABLE likes (
     id_like    SERIAL PRIMARY KEY,
-    id_usuario INT NOT NULL REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    id_usuario INT NOT NULL REFERENCES usuarios(id_usuario) ON DELETE CASCADE, -- supongo que el que dió like
     id_obra    INT NOT NULL REFERENCES obras(id_obra) ON DELETE CASCADE,
     fecha      TIMESTAMP NOT NULL DEFAULT NOW(),
     UNIQUE (id_usuario, id_obra)  -- un usuario no puede likear dos veces la misma obra
@@ -116,7 +116,7 @@ CREATE TABLE comentarios (
     id_comentario SERIAL PRIMARY KEY,
     contenido     TEXT      NOT NULL,
     fecha         TIMESTAMP NOT NULL DEFAULT NOW(),
-    id_usuario    INT       NOT NULL REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    id_usuario    INT       NOT NULL REFERENCES usuarios(id_usuario) ON DELETE CASCADE, -- el que comenta
     id_obra       INT       NOT NULL REFERENCES obras(id_obra) ON DELETE CASCADE
 );
 
