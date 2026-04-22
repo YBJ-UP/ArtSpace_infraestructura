@@ -16,8 +16,8 @@ SELECT
     (SELECT COUNT(*) FROM comentarios c WHERE c.id_obra = o.id_obra) AS comentarios_totales
 
 FROM obras o
-LEFT JOIN usuarios u WHERE o.id_usuario = u.id_usuario
-LEFT JOIN perfiles p WHERE u.id_usuario = p.id_usuario
-LEFT JOIN obra_subcategoria os WHERE o.id_obra = os.id_obra
-LEFT JOIN subcategorias sub WHERE o.id_obra = os.id_obra
-LEFT JOIN categorias cat WHERE sub.id_categoria = cat.id_categoria;
+LEFT JOIN usuarios u ON o.id_usuario = u.id_usuario
+LEFT JOIN perfiles p ON u.id_usuario = p.id_usuario
+LEFT JOIN obra_subcategoria os ON o.id_obra = os.id_obra
+LEFT JOIN subcategorias sub ON o.id_obra = os.id_obra
+LEFT JOIN categorias cat ON sub.id_categoria = cat.id_categoria;
