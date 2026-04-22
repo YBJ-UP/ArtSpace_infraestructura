@@ -19,13 +19,12 @@ FROM obras o
 LEFT JOIN usuarios u ON o.id_usuario = u.id_usuario
 LEFT JOIN perfiles p ON u.id_usuario = p.id_usuario
 LEFT JOIN obra_subcategoria os ON o.id_obra = os.id_obra
-LEFT JOIN subcategorias sub ON o.id_obra = os.id_obra
+LEFT JOIN subcategorias sub ON os.id_subcategoria = sub.id_subcategoria
 LEFT JOIN categorias cat ON sub.id_categoria = cat.id_categoria;
-
-SELECT * FROM vw_detalles_obra;
 
 CREATE OR REPLACE VIEW vw_detalles_perfil AS
 SELECT
+    u.id_usuario,
     u.nombre,
     u.correo,
     p.biografia,
@@ -36,5 +35,3 @@ SELECT
     (SELECT COUNT(*) FROM seguidores s WHERE u.id_usuario = s.usuario_origen) AS seguidos_totales
 FROM usuarios u
 LEFT JOIN perfiles p ON u.id_usuario = p.id_usuario;
-
-SELECT * FROM vw_detalles_perfil;

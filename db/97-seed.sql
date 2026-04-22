@@ -26,6 +26,24 @@ INSERT INTO subcategorias (nombre, id_categoria) VALUES
     ('Paisaje', 2),
     ('Urbana', 2);
 
+-- Subcategorías de Escultura
+INSERT INTO subcategorias (nombre, id_categoria) VALUES
+    ('Arcilla', 4),
+    ('Madera', 4),
+    ('Metal', 4);
+
+-- Subcategorías de Música
+INSERT INTO subcategorias (nombre, id_categoria) VALUES
+    ('Composición', 5),
+    ('Producción', 5),
+    ('Instrumental', 5);
+
+-- Subcategorías de Literatura
+INSERT INTO subcategorias (nombre, id_categoria) VALUES
+    ('Poesía', 6),
+    ('Cuento', 6),
+    ('Ensayo', 6);
+
 -- Usuario admin de prueba (password: admin123 hasheado con bcrypt)
 INSERT INTO usuarios (nombre, correo, password, rol) VALUES
     ('Admin ArtSpace', 'admin@artspace.com',
